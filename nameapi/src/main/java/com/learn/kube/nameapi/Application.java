@@ -47,13 +47,16 @@ public class Application {
 //        return new Docket(DocumentationType.SWAGGER_2).select()
 //            .apis(RequestHandlerSelectors.basePackage("com.tutorialspoint.swaggerdemo")).build();
     }
-	
+
+	@Bean
 	public WebMvcConfigurer corsConfigurer() {
       return new WebMvcConfigurer() {
-          @Override
-          public void addCorsMappings(CorsRegistry registry) {
-              registry.addMapping("/").allowedOrigins("*");
-          }
+        @Override
+        public void addCorsMappings(CorsRegistry registry) {
+//        registry.addMapping("/**")
+//        .allowedMethods("GET", "POST").allowedHeaders("*");
+            registry.addMapping("/**");
+        }
       };
   }
 
